@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Monsters!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style type="text/css">
+      body {
+        margin: 0 auto;
+        max-width: 40em;
+        width: 88%;
+      }
+
+      /**
+			 * A simple grid layout
+			 */
+      .row {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        text-align: center;
+      }
+
+      .grid {
+        min-height: 6em;
+        padding: 1em;
+      }
+
+      /**
+			 * Make sure images scale
+			 */
+      img {
+        height: auto;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body aria-live="polite">
+    <h1 style="text-align: center">Monsters!</h1>
+
+    <div id="app">
+      <div class="row"></div>
+    </div>
+
+    <footer>
+      <hr />
+      <p class="text-small text-muted">
+        Icons by
+        <a href="https://thenounproject.com/term/door/311732/"
+          >Jamie Dickinson</a
+        >,
+        <a href="https://thenounproject.com/term/monster/184225/"
+          >Nicky Knicky</a
+        >,
+        <a href="https://thenounproject.com/term/monster/1510400/"
+          >Alvaro Cabrera</a
+        >,
+        <a href="https://thenounproject.com/term/monster/28460/">Eliricon</a>,
+        <a href="https://thenounproject.com/term/monster/82823/">April Yang</a>,
+        <a href="https://thenounproject.com/term/monster/1062009/">tk66</a>,
+        <a href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>,
+        <a href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a
+        >,
+        <a href="https://thenounproject.com/term/monster/2236082">iconcheese</a
+        >, and
+        <a href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a
+        >.
+      </p>
+    </footer>
+
+    <script>
+      // The monsters and socks
+      let monsters = [
+        {
+          name: "monster1",
+          src: "svg/monster1.svg",
+          alt: "Yellow pig-shaped monster",
+        },
+        {
+          name: "monster2",
+          src: "svg/monster2.svg",
+          alt: "Yellow potato shaped one-eyed monster with skinny legs",
+        },
+        {
+          name: "monster3",
+          src: "svg/monster3.svg",
+          alt: "Green u-shaped monster with sharp teeth",
+        },
+        {
+          name: "monster4",
+          src: "svg/monster4.svg",
+          alt: "Red four-armed monster with no legs",
+        },
+        {
+          name: "monster5",
+          src: "svg/monster5.svg",
+          alt: "Green ball-shaped monster with spikes and one eye",
+        },
+        {
+          name: "monster6",
+          src: "svg/monster6.svg",
+          alt: "Green upside down triangle monster with sharp teeth, one eye and feet attached to apex",
+        },
+        {
+          name: "monster7",
+          src: "svg/monster7.svg",
+          alt: "Purple monster with one eye and two tentacles with stubby feet",
+        },
+        {
+          name: "monster8",
+          src: "svg/monster8.svg",
+          alt: "Purple monster with no legs or arms, one eye and two pointy ears.",
+        },
+        {
+          name: "monster9",
+          src: "svg/monster9.svg",
+          alt: "Bird baby blue monster with four feather tails",
+        },
+        {
+          name: "monster10",
+          src: "svg/monster10.svg",
+          alt: "Blue monster with chubby body, tiny stubby legs, no arms and long eye sockets",
+        },
+        {
+          name: "monster11",
+          src: "svg/monster11.svg",
+          alt: "Grey big furry monster",
+        },
+        {
+          name: "sock",
+          src: "svg/sock.svg",
+          alt: "Pair of long white socks",
+        },
+      ];
+
+      // Your code goes here...
+
+      const app = document.querySelector("#app");
+      const row = document.querySelector(".row");
+
+      function shuffle(array) {
+        let currentIndex = array.length;
+        let temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+      }
+
+      const newMonsterArray = shuffle(Array.from(monsters));
+
+      newMonsterArray.find((monster) => {
+        const div = document.createElement("div");
+        const img = document.createElement("img");
+        div.classList.add("grid");
+        img.setAttribute("src", monster.src);
+        img.setAttribute("alt", monster.alt);
+        row.appendChild(div);
+        div.appendChild(img);
+      });
+    </script>
+  </body>
+</html>
